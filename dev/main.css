@@ -1,0 +1,49 @@
+body {
+    background-image: url("depositphotos_82022266-stock-photo-young-cows-grazing-on-a.jpg");
+    background-size:100% auto;
+    background-repeat: repeat-y;
+}
+
+#first {
+    text-align: center;
+    color: red;
+    font-size: xx-large;
+    font-family: "Arial Narrow", serif;
+    font-style: inherit;
+}
+#second {
+    text-align: left;
+    color: black;
+    font-style: italic;
+    font-family: "Arial Narrow",serif;
+    font-size: x-large;
+}
+#third {
+    text-align: center;
+    color: red;
+    font-size: x-large;
+    font-family: "Bell MT",serif;
+    font-style: oblique;
+}
+#first_link {
+    color: blueviolet;
+    background-color: yellow;
+    padding: 10px;
+    display-inside:ruby-text-container;
+    margin-top: 20px;
+}
+.fourth {
+    text-align: left;
+    color: blue;
+    font-family: "Bell MT";
+    font-style: italic;
+}
+.prodacts {
+    color: black;
+}
+.nav-link {
+    color: rgba(15, 114, 240, 0.55);
+    font-style: italic;
+    font-size: x-large;
+    font-weight: bold;
+}
