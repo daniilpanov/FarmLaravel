@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\PageController;
+use Illuminate\Support\Facades\App;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,26 +18,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::get('/cart', CartController::class);
+
+Route::get('/catalog', CatalogController::class);
+
+Route::get('/catalog/{alias}', [CatalogController::class, 'category']);
+
+Route::get('/locale/{lng}', function (Request $request, string $lng) {
+    App::setLocale($lng);
+    return redirect()->back();
 });
 
-Route::get('/cart', function () {
-    return view('cart');
-});
-
-Route::get('/info', function () {
-    return view('info');
-});
-
-Route::get('/about', function () {
-    return view('about');
-});
-
-Route::get('/catalog', function () {
-    return view('market');
-});
-
-Route::get('/catalog/{alias}', function () {
-    return view('itempage');
-});
+Route::get('/{page?}', [PageController::class, 'page']);

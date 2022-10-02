@@ -1,5 +1,5 @@
 body {
-    background-image: url("depositphotos_82022266-stock-photo-young-cows-grazing-on-a.jpg");
+    background-image: url("/resources/img/depositphotos_82022266-stock-photo-young-cows-grazing-on-a.jpg");
     background-size:100% auto;
     background-repeat: repeat-y;
 }
@@ -35,7 +35,7 @@ body {
 .fourth {
     text-align: left;
     color: blue;
-    font-family: "Bell MT";
+    font-family: "Bell MT", sans-serif;
     font-style: italic;
 }
 .products {

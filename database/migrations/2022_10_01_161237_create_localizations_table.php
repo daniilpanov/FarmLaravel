@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pages', function (Blueprint $table) {
+        Schema::create('localizations', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->mediumText('description')->nullable();
-            $table->mediumText('keywords')->nullable();
-            $table->string('alias');
-            $table->boolean('clickable')->default(true);
-            $table->boolean('visible')->default(true);
-            $table->bigInteger('parent_id')->nullable();
+            $table->bigInteger('page_id');
+            $table->string('lang_code', 10);
+            $table->boolean('draft')->default(true);
+            $table->longText('content')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pages');
+        Schema::dropIfExists('localizations');
     }
 };
