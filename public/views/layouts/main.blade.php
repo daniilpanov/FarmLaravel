@@ -40,7 +40,7 @@
 <header>
     @include('components.header')
 </header>
-<main>
+<main class="container letter">
     @section('content')
     @show
 </main>

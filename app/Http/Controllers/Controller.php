@@ -20,15 +20,23 @@ class Controller extends BaseController
     protected function getPage($page): array
     {
         $data = [];
-        $data['page'] = Page::where('alias', $page)->first();
+        $data['page'] = Page::where('alias', $page)->where('visible', true)->first();
         $data['act'] = $act = $page . 'Page';
+
+        if (!method_exists($this, $act)) {
+            $data['act'] = $act = null;
+        }
 
         if (View::exists($page)) {
             $data['view'] = $page;
         } else {
             $data['view'] = null;
             throw_unless(
-                $data && method_exists($this, $act),
+                $data['page'] || $act,
+                NotFoundHttpException::class
+            );
+            throw_if(
+                $data['page'] && !$data['page']->content,
                 NotFoundHttpException::class
             );
         }

@@ -1,49 +1,124 @@
-body {
-    background-image: url("/resources/img/depositphotos_82022266-stock-photo-young-cows-grazing-on-a.jpg");
-    background-size:100% auto;
-    background-repeat: repeat-y;
+a, a:hover {
+    text-decoration: none;
+    color: inherit;
 }
 
-#first {
-    text-align: center;
-    color: red;
-    font-size: xx-large;
-    font-family: "Arial Narrow", serif;
-    font-style: inherit;
+
+/* --- BODY --- */
+body {
+    background-image: url("/img/wood1.jpg");
+    background-size: cover;
+    background-repeat: repeat-y;
+
+    min-height: 100vh;
 }
-#second {
-    text-align: left;
-    color: black;
-    font-style: italic;
-    font-family: "Arial Narrow",serif;
-    font-size: x-large;
+
+/* --- HEADER --- */
+/* header-img */
+.header-img {
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    height: 50vh;
+    min-height: 300px;
 }
-#third {
-    text-align: center;
-    color: red;
-    font-size: x-large;
-    font-family: "Bell MT",serif;
-    font-style: oblique;
+.header-img.large {
+    height: 70vh;
+    background-position: center;
 }
-#first_link {
-    color: blueviolet;
-    background-color: yellow;
-    padding: 10px;
-    display-inside:ruby-text-container;
-    margin-top: 20px;
-}
-.fourth {
-    text-align: left;
-    color: blue;
-    font-family: "Bell MT", sans-serif;
-    font-style: italic;
-}
-.products {
-    color: black;
-}
+/* navigation */
 .nav-link {
-    color: rgba(15, 114, 240, 0.55);
+    color: rgb(138, 239, 14) !important;
     font-style: italic;
     font-size: x-large;
     font-weight: bold;
+}
+.nav-link.active {
+    text-decoration: underline;
+}
+
+/* --- MAIN --- */
+section {
+    margin-top: 100px;
+}
+
+.first {
+    text-align: center;
+    color: rgb(138, 239, 14);
+    font-size: xxx-large;
+    font-family: "Segoe UI Historic", serif;
+    font-style: italic;
+    margin-bottom: 50px;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.third {
+    text-align: center;
+    color: rgb(138, 239, 14) !important;
+    font-size: xx-large;
+    font-family: "Bell MT", serif;
+    font-style: oblique;
+    text-decoration: underline;
+}
+
+.fourth {
+    color: rgb(138, 239, 14) !important;
+    font-family: "Bell MT", serif;
+    font-style: italic;
+    font-size: x-large;
+}
+
+.letter {
+    text-align: left;
+    color: rgba(138, 239, 14, 0.55);
+    font-family: "Bell MT", serif;
+    font-style: italic;
+    font-size: x-large;
+}
+
+.doska {
+    background-size: contain;
+}
+
+.col-md, .row {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.products {
+    color: black;
+    font-size: large;
+}
+
+.left {
+    float: left;
+    margin-right: 30px
+}
+
+/* --- FOOTER --- */
+footer {
+    margin-top: 120px;
+}
+
+/* MEDIA */
+@media (max-width: 768px) {
+    body {
+        background-image: url("/img/wood_mob.jpg");
+        background-position: center;
+    }
+}
+
+@media (min-width: 768px) {
+    #pictures .col-md-3 {
+        padding: 0;
+        overflow-x: hidden;
+    }
+
+    #pictures > .col-md-3 > button {
+        width: calc(100% - 20px);
+        margin: 0 10px;
+    }
 }
