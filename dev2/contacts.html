@@ -1,26 +1,38 @@
 <!doctype html>
-<html lang="ru" xmlns="http://www.w3.org/1999/html">
-<meta charset="UTF-8">
+<html lang="en">
 <head>
-    <title> Контакты </title>
+    <!--  -->
+    <title>Контакты</title>
+
+    <!--  -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="robots" content="all">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--  -->
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!--  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    <!--  -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
             integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
             crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
             integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
             crossorigin="anonymous"></script>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link href="main.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
-<body>
 
+<body>
 <header>
-    <div class="header-img" style="background-image:url('assets/img/map_contact.jpg')">
+    <div class="header-img "
+         style="background-image:url('assets/img/map_contact.jpg')">
     </div>
+
     <nav class="navbar navbar-expand-lg navbar-light container">
-        <!-- <a class="navbar-brand" href="#">Меню</a>-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -28,36 +40,40 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav" style="width: 100%; justify-content: space-between">
                 <li class="nav-item doska">
-                    <a class="nav-link" href="index.html">О ферме</a>
+                    <a class="nav-link lnk"  href="index.html">О ферме</a>
                 </li>
                 <li class="nav-item doska">
-                    <a class="nav-link" href="catalog.html">Продукция</a>
+                    <a class="nav-link lnk"  href="catalog.html">Продукция</a>
                 </li>
                 <li class="nav-item doska">
-                    <a class="nav-link" href="delivery.html">Доставка и самовывоз</a>
+                    <a class="nav-link lnk"  href="delivery.html">Доставка и самовывоз</a>
                 </li>
                 <li class="nav-item doska">
-                    <a class="nav-link active" aria-current="page" href="contacts.html">Контакты</a>
+                    <a class="nav-link lnk active" aria-current="page"  href="contacts.html">Контакты</a>
                 </li>
             </ul>
         </div>
     </nav>
 </header>
-
 <main class="container letter">
     <section>
         <h1 class="first">Как нас найти</h1>
 
         <div class="row">
             <div class="col-md">
-                <div style="position:relative;overflow:hidden;"><a
-                    href="https://yandex.ru/maps/10174/saint-petersburg-and-leningrad-oblast/?utm_medium=mapframe&utm_source=maps"
-                    style="color:#eee;font-size:12px;position:absolute;top:0px;">Санкт‑Петербург и Ленинградская
-                    область</a><a
-                    href="https://yandex.ru/maps/10174/saint-petersburg-and-leningrad-oblast/house/kiyevskoye_shosse_59/ZkAYfw5mSEcFQFtjfXh0eHtqZw==/?from=mapframe&ll=29.996122%2C59.459793&utm_medium=mapframe&utm_source=maps&z=16"
-                    style="color:#eee;font-size:12px;position:absolute;top:14px;">Киевское шоссе, 59 — Яндекс Карты</a>
-                    <iframe src="https://yandex.ru/map-widget/v1/-/CCUNb2AvoB" width="560" height="400" frameborder="1"
-                            allowfullscreen="true" style="position:relative;"></iframe>
+                <div style="position:relative;overflow:hidden;">
+                    <a
+                        href="https://yandex.ru/maps/10174/saint-petersburg-and-leningrad-oblast/?utm_medium=mapframe&utm_source=maps"
+                        style="color:#eee;font-size:12px;position:absolute;top:0">
+                        Санкт‑Петербург и Ленинградская область
+                    </a>
+                    <a
+                        href="https://yandex.ru/maps/10174/saint-petersburg-and-leningrad-oblast/house/kiyevskoye_shosse_59/ZkAYfw5mSEcFQFtjfXh0eHtqZw==/?from=mapframe&ll=29.996122%2C59.459793&utm_medium=mapframe&utm_source=maps&z=16"
+                        style="color:#eee;font-size:12px;position:absolute;top:14px">
+                        Киевское шоссе, 59 — Яндекс Карты
+                    </a>
+                    <iframe src="https://yandex.ru/map-widget/v1/-/CCUNb2AvoB" width="560" height="400"
+                            allowfullscreen style="position:relative;"></iframe>
                 </div>
             </div>
             <div class="col-md">
@@ -71,19 +87,26 @@
         <p></p>
         <div class="row">
             <div class="col-md">
-                <div style="position:relative;overflow:hidden;"><a
-                    href="https://yandex.ru/maps?utm_medium=mapframe&utm_source=maps"
-                    style="color:#eee;font-size:12px;position:absolute;top:0px;">Яндекс Карты</a><a
-                    href="https://yandex.ru/maps/10174/saint-petersburg-and-leningrad-oblast/house/derevnya_ryabizi/ZkAYfwBnSkMEQFtjfXh4cn9hZw==/?ll=29.978808%2C59.493734&utm_medium=mapframe&utm_source=maps&z=17.37"
-                    style="color:#eee;font-size:12px;position:absolute;top:14px;">59.493323,29.977363 — Яндекс Карты</a>
-                    <iframe src="https://yandex.ru/map-widget/v1/-/CCUNb2bzsA" width="560" height="400" frameborder="1"
-                            allowfullscreen="true" style="position:relative;"></iframe>
+                <div style="position:relative;overflow:hidden;">
+                    <a
+                        href="https://yandex.ru/maps?utm_medium=mapframe&utm_source=maps"
+                        style="color:#eee;font-size:12px;position:absolute;top:0">
+                        Яндекс Карты
+                    </a>
+                    <a
+                        href="https://yandex.ru/maps/10174/saint-petersburg-and-leningrad-oblast/house/derevnya_ryabizi/ZkAYfwBnSkMEQFtjfXh4cn9hZw==/?ll=29.978808%2C59.493734&utm_medium=mapframe&utm_source=maps&z=17.37"
+                        style="color:#eee;font-size:12px;position:absolute;top:14px">
+                        59.493323,29.977363 — Яндекс Карты
+                    </a>
+                    <iframe src="https://yandex.ru/map-widget/v1/-/CCUNb2bzsA" width="560" height="400"
+                            allowfullscreen style="position:relative"></iframe>
                 </div>
             </div>
 
             <div class="col-md">
                 <ul>
-                    <li>АДРЕС ФЕРМЫ: Ленинградская область, Гатчинский район,Войсковицкое
+                    <li>
+                        АДРЕС ФЕРМЫ: Ленинградская область, Гатчинский район,Войсковицкое
                         поселение,деревня
                         Рябизи, Фермерская ул.
                     </li>
@@ -103,21 +126,21 @@
             </p>
         </div>
 
-        <form id="form">
-            <div class="row">
-                <div class="col-md-4 offset-md-1">
-                    <label>Имя: </label>
-                </div>
-                <div class="col-md-6">
-                    <input type="text" class="form-control" placeholder="Имя" aria-label="Имя">
-                </div>
+        <form id="form" method="post" action="/contacts/send">
+            <input type="hidden" name="_token" value="G4DSU4tuZoHvtxaH1vE4rFPUXxuiMMwkH6Lo8oeS">            <div class="row">
+            <div class="col-md-4 offset-md-1">
+                <label>Имя: </label>
             </div>
+            <div class="col-md-6">
+                <input name="name" type="text" class="form-control" placeholder="Имя" aria-label="Имя">
+            </div>
+        </div>
             <div class="row">
                 <div class="col-md-4 offset-md-1">
                     <label>Телефон: </label>
                 </div>
                 <div class="col-md-6">
-                    <input type="tel" class="form-control" placeholder="Телефон" aria-label="Телефон">
+                    <input name="tel" type="tel" class="form-control" placeholder="Телефон" aria-label="Телефон">
                 </div>
             </div>
             <div class="row">
@@ -125,7 +148,7 @@
                     <label>E-Mail: </label>
                 </div>
                 <div class="col-md-6">
-                    <input type="email" class="form-control" placeholder="E-mail" aria-label="E-mail">
+                    <input name="email" type="email" class="form-control" placeholder="E-mail" aria-label="E-mail">
                 </div>
             </div>
             <div class="row">
@@ -133,14 +156,15 @@
                     <label>Сообщение: </label>
                 </div>
                 <div class="col-md-6">
-                    <textarea class="form-control" placeholder="Сообщение" aria-label="Сообщение"></textarea>
+                    <textarea name="msg" class="form-control" placeholder="Сообщение"
+                              aria-label="Сообщение"></textarea>
                 </div>
             </div>
             <p></p>
             <div class="row text-center">
                 <div class="col-md-2 offset-md-5">
                     <button type="submit" class="btn btn-outline-success">
-                        <span class="fourth">ОТПРАВИТЬ</span>
+                        <span class="fourth text-uppercase">Отправить</span>
                     </button>
                 </div>
             </div>
@@ -156,7 +180,6 @@
         </div>
     </section>
 </main>
-
 <footer>
     <div class="text-center">
         <img src="assets/img/vkus.jpg">

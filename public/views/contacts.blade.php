@@ -1,8 +1,19 @@
 @extends('layouts.main')
 
-@section('header.image.url'){{ asset('img/map_contact.jpg') }}@endsection
+@section('header.image.url'){{ $page?->image?->path() }}@endsection
 
 @section('content')
+    @isset($data['success'])
+        @if ($data['success'] == 1)
+            <div class="modal">
+                <a href="/contacts" onclick="window.history.pushState('', '', location.pathname)">&times;</a>
+            </div>
+        @else
+            <div class="modal">
+                <a href="/contacts" onclick="window.history.pushState('', '', location.pathname)">&times;</a>
+            </div>
+        @endif
+    @endisset
     <section>
         <h1 class="first">Как нас найти</h1>
 
@@ -12,8 +23,7 @@
                     <a
                         href="https://yandex.ru/maps/10174/saint-petersburg-and-leningrad-oblast/?utm_medium=mapframe&utm_source=maps"
                         style="color:#eee;font-size:12px;position:absolute;top:0">
-                        Санкт‑Петербург и Ленинградская
-                        область
+                        Санкт‑Петербург и Ленинградская область
                     </a>
                     <a
                         href="https://yandex.ru/maps/10174/saint-petersburg-and-leningrad-oblast/house/kiyevskoye_shosse_59/ZkAYfw5mSEcFQFtjfXh0eHtqZw==/?from=mapframe&ll=29.996122%2C59.459793&utm_medium=mapframe&utm_source=maps&z=16"
@@ -53,7 +63,8 @@
 
             <div class="col-md">
                 <ul>
-                    <li>АДРЕС ФЕРМЫ: Ленинградская область, Гатчинский район,Войсковицкое
+                    <li>
+                        АДРЕС ФЕРМЫ: Ленинградская область, Гатчинский район,Войсковицкое
                         поселение,деревня
                         Рябизи, Фермерская ул.
                     </li>
@@ -64,30 +75,31 @@
 
     <section>
         <div class="first">
-            <p>
+            {!! $___('form_title', '<p>
                 Вы можете сделать заказ по номеру тел/whatsapp
                 <a href="tel:+79112147227">+79112147227</a>
             </p>
             <p>
                 Или написать нам:
-            </p>
+            </p>') !!}
         </div>
 
-        <form id="form">
+        <form id="form" method="post" action="/contacts/send">
+            @csrf
             <div class="row">
                 <div class="col-md-4 offset-md-1">
-                    <label>Имя: </label>
+                    <label>{{ $___('name', 'Имя') }}: </label>
                 </div>
                 <div class="col-md-6">
-                    <input type="text" class="form-control" placeholder="Имя" aria-label="Имя">
+                    <input name="name" type="text" class="form-control" placeholder="{{ $___('name', 'Имя') }}" aria-label="{{ $___('name', 'Имя') }}">
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4 offset-md-1">
-                    <label>Телефон: </label>
+                    <label>{{ $___('phone', 'Телефон') }}: </label>
                 </div>
                 <div class="col-md-6">
-                    <input type="tel" class="form-control" placeholder="Телефон" aria-label="Телефон">
+                    <input name="tel" type="tel" class="form-control" placeholder="{{ $___('phone', 'Телефон') }}" aria-label="{{ $___('phone', 'Телефон') }}">
                 </div>
             </div>
             <div class="row">
@@ -95,22 +107,23 @@
                     <label>E-Mail: </label>
                 </div>
                 <div class="col-md-6">
-                    <input type="email" class="form-control" placeholder="E-mail" aria-label="E-mail">
+                    <input name="email" type="email" class="form-control" placeholder="E-mail" aria-label="E-mail">
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4 offset-md-1">
-                    <label>Сообщение: </label>
+                    <label>{{ $___('msg', 'Сообщение') }}: </label>
                 </div>
                 <div class="col-md-6">
-                    <textarea class="form-control" placeholder="Сообщение" aria-label="Сообщение"></textarea>
+                    <textarea name="msg" class="form-control" placeholder="{{ $___('msg', 'Сообщение') }}"
+                              aria-label="{{ $___('msg', 'Сообщение') }}"></textarea>
                 </div>
             </div>
             <p></p>
             <div class="row text-center">
                 <div class="col-md-2 offset-md-5">
                     <button type="submit" class="btn btn-outline-success">
-                        <span class="fourth">ОТПРАВИТЬ</span>
+                        <span class="fourth text-uppercase">{{ $___('send', 'Отправить') }}</span>
                     </button>
                 </div>
             </div>
@@ -119,9 +132,9 @@
 
     <section>
         <div class="third">
-            Мы в ВК:&emsp;
+            {{ $___('VK_pre', 'Мы в ВК') }}:&emsp;
             <a href="https://vk.com/public193961315">
-                <u>Фермерские продукты Гатчина</u>
+                <u>{{ $___('VK_link_title', 'Фермерские продукты Гатчина') }}</u>
             </a>
         </div>
     </section>

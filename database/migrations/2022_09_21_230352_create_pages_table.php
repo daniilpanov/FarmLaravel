@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('title');
             $table->mediumText('description')->nullable();
             $table->mediumText('keywords')->nullable();
-            $table->string('alias');
+            $table->string('alias')->unique();
             $table->boolean('clickable')->default(true);
             $table->boolean('visible')->default(true);
             $table->bigInteger('parent_id')->nullable();

@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('header.image.url'){{ asset('img/delivery.jpg') }}@endsection
+@section('header.image.url'){{ $page?->image?->path() }}@endsection
 @section('header.image.classes'){{ 'large' }}@endsection
 
 @section('content')
@@ -64,11 +64,11 @@
 
         <div class="row justify-content-around">
             <div class="col-4 text-center">
-                <img src="{{ asset('img/St._Petersburg_Russia_Bridges_Evening_Rivers_Neva_556759_1280x853.jpg') }}"
+                <img src="{{ asset('storage/img/St._Petersburg_Russia_Bridges_Evening_Rivers_Neva_556759_1280x853.jpg') }}"
                      height="200">
             </div>
             <div class="col-4 text-center">
-                <img src="{{ asset('img/oblast.jpg') }}" height="200">
+                <img src="{{ asset('storage/img/oblast.jpg') }}" height="200">
             </div>
         </div>
         <div class="row justify-content-around">

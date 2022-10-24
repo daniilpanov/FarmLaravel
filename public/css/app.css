@@ -2,7 +2,24 @@ a, a:hover {
     text-decoration: none;
     color: inherit;
 }
-
+/* standard link */
+.lnk {
+    color: rgb(138, 239, 14) !important;
+    font-style: italic;
+    font-size: x-large;
+    font-weight: bold;
+    transition: text-shadow ease-out .1s;
+}
+.lnk:hover, .lnk:focus:not(button) {
+    text-shadow: 2px 2px #198754;
+}
+.lnk:active {
+    text-shadow: none;
+    color: #198754 !important;
+}
+.lnk.active {
+    text-decoration: underline;
+}
 
 /* --- BODY --- */
 body {
@@ -26,20 +43,10 @@ body {
     height: 70vh;
     background-position: center;
 }
-/* navigation */
-.nav-link {
-    color: rgb(138, 239, 14) !important;
-    font-style: italic;
-    font-size: x-large;
-    font-weight: bold;
-}
-.nav-link.active {
-    text-decoration: underline;
-}
 
 /* --- MAIN --- */
 section {
-    margin-top: 100px;
+    margin-top: 75px;
 }
 
 .first {
@@ -63,7 +70,6 @@ section {
 }
 
 .fourth {
-    color: rgb(138, 239, 14) !important;
     font-family: "Bell MT", serif;
     font-style: italic;
     font-size: x-large;
@@ -88,14 +94,41 @@ section {
     margin-right: 0;
 }
 
-.products {
+.catalog-row img {
+    height: auto;
+    width: 100%;
+}
+.category-item {
     color: black;
     font-size: large;
+    display: flex;
+}
+.dot-spawn {
+    border-bottom: dotted 1px black;
+    flex: 1 0;
+    margin: 0 .4em;
+    height: 1.1em;
+}
+.category-item:hover {
+    color: inherit;
+}
+.category-item:hover .dot-spawn {
+    border-bottom-color: rgb(138, 239, 14);
 }
 
 .left {
     float: left;
     margin-right: 30px
+}
+
+#form .form-control {
+    margin: 10px 0;
+    border: 1px solid rgb(138, 239, 14);
+    background-color: #500000;
+    color: white;
+}
+#form .form-control:focus {
+    box-shadow: 0 0 10px 2px #198754;
 }
 
 /* --- FOOTER --- */
@@ -112,13 +145,14 @@ footer {
 }
 
 @media (min-width: 768px) {
-    #pictures .col-md-3 {
+    .catalog-row .col-md-3 {
         padding: 0;
         overflow-x: hidden;
     }
 
-    #pictures > .col-md-3 > button {
+    .catalog-row > .col-md-3 > .lnk {
         width: calc(100% - 20px);
         margin: 0 10px;
+        box-shadow: none !important;
     }
 }

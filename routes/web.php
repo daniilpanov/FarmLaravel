@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
@@ -30,3 +31,6 @@ Route::get('/locale/{lng}', function (Request $request, string $lng) {
 });
 
 Route::get('/{page?}', [PageController::class, 'page']);
+
+
+Route::post('/contacts/send', [MessageController::class, 'sendMsg']);

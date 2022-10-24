@@ -8,20 +8,37 @@ use Illuminate\Contracts\View\View;
 class CatalogController extends Controller
 {
     /**
-     * Handle the incoming request.
+     * INDEX
      *
      * @return View
+     * @throws \Throwable
      */
-    public function __invoke()
+    public function __invoke(): View
     {
-        return view('catalog')
-            ->with('catalog', Catalog::all())
-            ->with('page', $this->getPage('catalog')['page']);
+        return $this->current_view = view('catalog')
+            ->with(
+                'catalog',
+                Catalog::select([
+                        'alias' => 'catalogs.alias',
+                        'id' => 'catalogs.id',
+                        'image_id',
+                        'name' => 'catalogs.name'
+                    ])->where('catalogs.visible', true)
+                    ->leftJoin('pages', 'page_id', '=', 'pages.id')
+                    ->get()
+            )->with('page', $this->getPage('catalog')['page']);
     }
 
-    public function category(string $alias)
+    /**
+     * CATEGORY (alias)
+     *
+     * @param string $alias
+     * @return View
+     * @throws \Throwable
+     */
+    public function category(string $alias): View
     {
-        return view('category')
+        return $this->current_view = view('category')
             ->with('catalog', Catalog::where('alias', $alias)->get())
             ->with('page', $this->getPage('category')['page']);
     }

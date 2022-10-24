@@ -1,27 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Продукция</title>
+    <!--  -->
+    <title>Наша продукция</title>
+
+    <!--  -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="robots" content="all">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--  -->
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!--  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    <!--  -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
             integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
             crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
             integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
             crossorigin="anonymous"></script>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link href="main.css" rel="stylesheet">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
-<body>
 
+<body>
 <header>
-    <div class="header-img" style="background-image:url('assets/img/Milk_Cheese_Quark_curd_cottage_farmer_cheese_576611_1280x851.jpg')">
+    <div class="header-img "
+         style="background-image:url('assets/img/Milk_Cheese_Quark_curd_cottage_farmer_cheese_576611_1280x851.jpg')">
     </div>
+
     <nav class="navbar navbar-expand-lg navbar-light container">
-        <!-- <a class="navbar-brand" href="#">Меню</a>-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -29,176 +40,382 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav" style="width: 100%; justify-content: space-between">
                 <li class="nav-item doska">
-                    <a class="nav-link" href="index.html">О ферме</a>
+                    <a class="nav-link lnk"  href="index.html">О ферме</a>
                 </li>
                 <li class="nav-item doska">
-                    <a class="nav-link active" aria-current="page" href="catalog.html">Продукция</a>
+                    <a class="nav-link lnk active" aria-current="page"  href="catalog.html">Продукция</a>
                 </li>
                 <li class="nav-item doska">
-                    <a class="nav-link" href="delivery.html">Доставка и самовывоз</a>
+                    <a class="nav-link lnk"  href="delivery.html">Доставка и самовывоз</a>
                 </li>
                 <li class="nav-item doska">
-                    <a class="nav-link" href="contacts.html">Контакты</a>
+                    <a class="nav-link lnk"  href="contacts.html">Контакты</a>
                 </li>
             </ul>
         </div>
     </nav>
 </header>
+<main class="container letter">
+    <section>
+        <h1 class="first">Мы предлагаем:</h1>
 
-<main class="container">
-    <h1 class="first">Мы предлагаем:</h1>
+        <div class="row catalog-row">
+            <div class="col-md-3" id="category-milk">
+                <img src="assets/img/category-milk-icon.jpg" alt="" />
 
-    <div class="row" id="pictures">
-        <div class="col-md-3">
-            <!-- Сюда фотки -->
-            <!--<div style="background-image: url('assets/img/Milk-table.jpg');" class="pictures__img"></div>-->
-            <img src="assets/img/Milk-table.jpg" height="200">
+                <a class="btn lnk" data-bs-toggle="modal" data-bs-target="#modal-milk"
+                   onclick="toggleCategory('milk')" href="?category=milk">
+                    <u class="fourth text-center text-uppercase">Молочная продукция</u>
+                </a>
 
-            <!-- Кнопка-триггер модального окна -->
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#Milk">
-                <u class="fourth text-center">МОЛОЧНУЮ ПРОДУКЦИЮ</u>
-            </button>
-
-            <!-- Модальное окно -->
-            <div class="modal fade" id="Milk" tabindex="-1" aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Молочная продукция</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Закрыть"></button>
-                        </div>
-                        <div class="modal-body">
-                            <ul>
-                                <li><a class="products">Молоко коровье</a></li>
-                                <li><a class="products">Молоко козье</a></li>
-                                <li><a class="products">Творог</a></li>
-                                <li><a class="products">Сливки</a></li>
-                                <li><a class="products">Ряженка</a></li>
-                                <li><a class="products">Кефир</a></li>
-                                <li><a class="products">Сыр адыгейский</a></li>
-                                <li><a class="products">Масло сливочное</a></li>
-                            </ul>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть
-                            </button>
-                            <a href="contacts.html#form" class="btn btn-primary">
-                                Заказать
-                            </a>
+                <div class="modal fade" id="modal-milk" tabindex="-1" aria-labelledby="milk"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modal-title-milk">Молочная продукция</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        onclick="toggleCategory('milk')" aria-label="Закрыть"></button>
+                            </div>
+                            <div class="modal-body">
+                                <ul>
+                                    <li>
+                                        <a class="category-item" href="/catalog/milk/">
+                                            <div>
+                                                <span class="products">Молоко коровье</span>
+                                            </div>
+                                            <div class="dot-spawn"></div>
+                                            <div>
+                                                <span class="product-price">1</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="category-item" href="/catalog/milk/milk1">
+                                            <div>
+                                                <span class="products">Молоко козье</span>
+                                            </div>
+                                            <div class="dot-spawn"></div>
+                                            <div>
+                                                <span class="product-price">2</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="category-item" href="/catalog/milk/">
+                                            <div>
+                                                <span class="products">Творог</span>
+                                            </div>
+                                            <div class="dot-spawn"></div>
+                                            <div>
+                                                <span class="product-price">3</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="category-item" href="/catalog/milk/">
+                                            <div>
+                                                <span class="products">Сливки</span>
+                                            </div>
+                                            <div class="dot-spawn"></div>
+                                            <div>
+                                                <span class="product-price">4</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="category-item" href="/catalog/milk/">
+                                            <div>
+                                                <span class="products">Сыр адыгейский</span>
+                                            </div>
+                                            <div class="dot-spawn"></div>
+                                            <div>
+                                                <span class="product-price">5</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="category-item" href="/catalog/milk/">
+                                            <div>
+                                                <span class="products">Ряженка</span>
+                                            </div>
+                                            <div class="dot-spawn"></div>
+                                            <div>
+                                                <span class="product-price">6</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="category-item" href="/catalog/milk/">
+                                            <div>
+                                                <span class="products">Кефир</span>
+                                            </div>
+                                            <div class="dot-spawn"></div>
+                                            <div>
+                                                <span class="product-price">7</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="category-item" href="/catalog/milk/">
+                                            <div>
+                                                <span class="products">Сливочное масло</span>
+                                            </div>
+                                            <div class="dot-spawn"></div>
+                                            <div>
+                                                <span class="product-price">8</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="toggleCategory('milk')">
+                                    Закрыть
+                                </button>
+                                <a href="/catalog/milk" class="btn btn-primary">
+                                    Открыть полностью
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col-md-3" id="category-meat">
+                <img src="assets/img/category-meat-icon.jpg" alt="" />
 
-        </div>
-        <div class="col-md-3">
-            <!-- Сюда фотки -->
-            <img src="assets/img/Meat_products_steak_Cutting_board_Piece_Bokeh_607992_1280x714.jpg"
-                 height="200">
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#Meat">
-                <u class="fourth text-center">ПАРНОЕ МЯСО</u>
-            </button>
-            <!-- Модальное окно -->
-            <div class="modal fade" id="Meat" tabindex="-1" aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel1">Парное мясо</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Закрыть"></button>
-                        </div>
-                        <div class="modal-body">
-                            <ul>
-                                <li><a class="products">Говядина</a></li>
-                                <li><a class="products">Свинина</a></li>
-                                <li><a class="products">Баранина</a></li>
-                            </ul>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть
-                            </button>
-                            <a href="contacts.html#form" class="btn btn-primary">
-                                Заказать
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <a class="btn lnk" data-bs-toggle="modal" data-bs-target="#modal-meat"
+                   onclick="toggleCategory('meat')" href="?category=meat">
+                    <u class="fourth text-center text-uppercase">Парное мясо</u>
+                </a>
 
-        </div>
-        <div class="col-md-3">
-            <!-- Сюда фотки -->
-            <img src="assets/img/Nest_Eggs_Three_3_Gray_background_608397_1280x853.jpg" height="200">
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#Eggs">
-                <u class="fourth text-center">КУРИНЫЕ ЯЙЦА</u>
-            </button>
-            <!-- Модальное окно -->
-            <div class="modal fade" id="Eggs" tabindex="-1" aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel2">Куриные яйца</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Закрыть"></button>
+                <div class="modal fade" id="modal-meat" tabindex="-1" aria-labelledby="meat"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modal-title-meat">Парное мясо</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        onclick="toggleCategory('meat')" aria-label="Закрыть"></button>
+                            </div>
+                            <div class="modal-body">
+                                <ul>
+                                    <li>
+                                        <a class="category-item" href="/catalog/meat/">
+                                            <div>
+                                                <span class="products">Говядина</span>
+                                            </div>
+                                            <div class="dot-spawn"></div>
+                                            <div>
+                                                <span class="product-price">9</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="category-item" href="/catalog/meat/">
+                                            <div>
+                                                <span class="products">Свинина</span>
+                                            </div>
+                                            <div class="dot-spawn"></div>
+                                            <div>
+                                                <span class="product-price">10</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="category-item" href="/catalog/meat/">
+                                            <div>
+                                                <span class="products">Баранина</span>
+                                            </div>
+                                            <div class="dot-spawn"></div>
+                                            <div>
+                                                <span class="product-price">11</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="toggleCategory('meat')">
+                                    Закрыть
+                                </button>
+                                <a href="/catalog/meat" class="btn btn-primary">
+                                    Открыть полностью
+                                </a>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            <ul>
-                                <li><a class="products">Цена за 1 десяток</a></li>
-                            </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" id="category-eggs">
+                <img src="assets/img/category-eggs-icon.jpg" alt="" />
+
+                <a class="btn lnk" data-bs-toggle="modal" data-bs-target="#modal-eggs"
+                   onclick="toggleCategory('eggs')" href="?category=eggs">
+                    <u class="fourth text-center text-uppercase">Куриные яйца</u>
+                </a>
+
+                <div class="modal fade" id="modal-eggs" tabindex="-1" aria-labelledby="eggs"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modal-title-eggs">Куриные яйца</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        onclick="toggleCategory('eggs')" aria-label="Закрыть"></button>
+                            </div>
+                            <div class="modal-body">
+                                <ul>
+                                    <li>
+                                        <a class="category-item" href="/catalog/eggs/">
+                                            <div>
+                                                <span class="products">Цена за 1 десяток</span>
+                                            </div>
+                                            <div class="dot-spawn"></div>
+                                            <div>
+                                                <span class="product-price">12</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="toggleCategory('eggs')">
+                                    Закрыть
+                                </button>
+                                <a href="/catalog/eggs" class="btn btn-primary">
+                                    Открыть полностью
+                                </a>
+                            </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть
-                            </button>
-                            <a href="contacts.html#form" class="btn btn-primary">
-                                Заказать
-                            </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" id="category-fruits-and-vegetables">
+                <img src="assets/img/category-vegetables-n-fruits-icon.jpg" alt="" />
+
+                <a class="btn lnk" data-bs-toggle="modal" data-bs-target="#modal-fruits-and-vegetables"
+                   onclick="toggleCategory('fruits-and-vegetables')" href="?category=fruits-and-vegetables">
+                    <u class="fourth text-center text-uppercase">Сезонные овощи и фрукты</u>
+                </a>
+
+                <div class="modal fade" id="modal-fruits-and-vegetables" tabindex="-1" aria-labelledby="fruits-and-vegetables"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modal-title-fruits-and-vegetables">Сезонные овощи и фрукты</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        onclick="toggleCategory('fruits-and-vegetables')" aria-label="Закрыть"></button>
+                            </div>
+                            <div class="modal-body">
+                                <ul>
+                                    <li>
+                                        <a class="category-item" href="/catalog/fruits-and-vegetables/">
+                                            <div>
+                                                <span class="products">Картофель</span>
+                                            </div>
+                                            <div class="dot-spawn"></div>
+                                            <div>
+                                                <span class="product-price">13</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="category-item" href="/catalog/fruits-and-vegetables/">
+                                            <div>
+                                                <span class="products">Морковь</span>
+                                            </div>
+                                            <div class="dot-spawn"></div>
+                                            <div>
+                                                <span class="product-price"></span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="category-item" href="/catalog/fruits-and-vegetables/">
+                                            <div>
+                                                <span class="products">Огурцы</span>
+                                            </div>
+                                            <div class="dot-spawn"></div>
+                                            <div>
+                                                <span class="product-price"></span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="category-item" href="/catalog/fruits-and-vegetables/">
+                                            <div>
+                                                <span class="products">Яблоки</span>
+                                            </div>
+                                            <div class="dot-spawn"></div>
+                                            <div>
+                                                <span class="product-price"></span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="toggleCategory('fruits-and-vegetables')">
+                                    Закрыть
+                                </button>
+                                <a href="/catalog/fruits-and-vegetables" class="btn btn-primary">
+                                    Открыть полностью
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" id="category-test">
+                <div class="empty-img"></div>
+
+                <a class="btn lnk" data-bs-toggle="modal" data-bs-target="#modal-test"
+                   onclick="toggleCategory('test')" href="?category=test">
+                    <u class="fourth text-center text-uppercase">tmp</u>
+                </a>
+
+                <div class="modal fade" id="modal-test" tabindex="-1" aria-labelledby="test"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modal-title-test">tmp</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        onclick="toggleCategory('test')" aria-label="Закрыть"></button>
+                            </div>
+                            <div class="modal-body">
+                                <ul>
+                                    No products found at this category
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="toggleCategory('test')">
+                                    Закрыть
+                                </button>
+                                <a href="/catalog/test" class="btn btn-primary">
+                                    Открыть полностью
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <!-- Сюда фотки -->
-            <img src="assets/img/Apples_Carrots_Still-life_Wicker_basket_Jug_612038_1280x853.jpg" height="200">
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#Fruits">
-                <u class="fourth text-center">СЕЗОННЫЕ ОВОЩИ И ФРУКТЫ</u>
-            </button>
-            <!-- Модальное окно -->
-            <div class="modal fade" id="Fruits" tabindex="-1" aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel3">Сезонные овощи и фрукты</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Закрыть"></button>
-                        </div>
-                        <div class="modal-body">
-                            <ul>
-                                <li><a class="products">Картофель</a></li>
-                                <li><a class="products">Морковь</a></li>
-                                <li><a class="products">Огурцы</a></li>
-                                <li><a class="products">Яблоки</a></li>
-                            </ul>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть
-                            </button>
-                            <a href="contacts.html#form" class="btn btn-primary">
-                                Заказать
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
+    <script>
+        function toggleCategory(alias) {
+            if (typeof active !== 'undefined' && active) {
+                window.history.pushState('', '', location.pathname);
+                active = null;
+            } else {
+                window.history.pushState('', '', location.pathname + `?category=${alias}`);
+                active = alias;
+            }
+        }
+    </script>
 </main>
-
 <footer>
     <div class="text-center">
         <img src="assets/img/vkus.jpg">
