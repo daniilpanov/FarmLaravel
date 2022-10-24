@@ -47,5 +47,29 @@
 <footer>
     @include('components.footer')
 </footer>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyCHurOK0eX8GZBZFUNYFfOz2LNYQxtHr1E",
+        authDomain: "victoriafarm-7f0ee.firebaseapp.com",
+        projectId: "victoriafarm-7f0ee",
+        storageBucket: "victoriafarm-7f0ee.appspot.com",
+        messagingSenderId: "660808331688",
+        appId: "1:660808331688:web:7daf741741ea8e144b6d9d",
+        measurementId: "G-W7PFFQ1ES5"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+</script>
 </body>
 </html>
