@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
+use App\Http\Kernel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Product extends Model
 {
@@ -19,19 +22,25 @@ class Product extends Model
             ->where('visible', '=', true);
     }
 
-    public function page()
+    public function page(): BelongsTo
     {
         return $this->belongsTo(Page::class, 'page_id', 'id');
     }
 
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Catalog::class, 'category_id', 'id');
     }
 
-    public function full_alias()
+    public function full_alias(): string
     {
         return ($this->category?->alias ?? '')
             . '/' . ($this->page?->alias ?? '');
+    }
+
+    public function cart(): HasOne
+    {
+        return $this->hasOne(Cart::class, 'product_id', 'id')
+            ->where('user_uuid', Kernel::$uuid);
     }
 }

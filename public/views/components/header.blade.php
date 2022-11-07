@@ -1,6 +1,8 @@
+@hasSection('header.image.url')
 <div class="header-img @section('header.image.classes')@show"
      style="background-image:url('@section('header.image.url')@show')">
 </div>
+@endif
 
 @isset($nav_disable)
 @elseif(!empty($menu))

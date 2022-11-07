@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Kernel;
 use App\Models\Catalog;
 use Illuminate\Contracts\View\View;
 
