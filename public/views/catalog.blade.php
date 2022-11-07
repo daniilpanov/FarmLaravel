@@ -20,7 +20,7 @@
                     @if($category->image == null)
                         <div class="empty-img"></div>
                     @else
-                        {!! $category->image->getStr() !!}
+                        {!! $category->image !!}
                     @endif
 
                     <a class="btn lnk" data-bs-toggle="modal" data-bs-target="#modal-{{ $category->alias }}"

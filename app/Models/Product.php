@@ -6,6 +6,7 @@ use App\Http\Kernel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -14,11 +15,11 @@ class Product extends Model
     use HasFactory;
 
     /**
-     * @return HasMany
+     * @return HasOne
      */
-    public function images(): HasMany
+    public function image(): HasOne
     {
-        return $this->hasMany(Image::class, 'product_id', 'id')
+        return $this->hasOne(Image::class, 'product_id', 'id')
             ->where('visible', '=', true);
     }
 

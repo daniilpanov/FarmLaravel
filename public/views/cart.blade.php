@@ -35,11 +35,13 @@
                                             </div>
                                         </div>
 
-                                        @empty($item->product->images)
-                                            {{ $item->product->images[0]->getStr(['class' => 'card-img-top']) }}
+                                        @if($item->product->image)
+                                            {!! $item->product->image->getStr(['class' => 'card-img-top']) !!}
                                         @else
-                                            {{-- Сделать вывод картинки "Нет картинки" :) --}}
-                                        @endempty
+                                            <div class="card-img-top" style="display: flex; justify-content: center">
+                                                <img src="{{ asset('img/no-pic.png') }}" alt="no picture" height="341">
+                                            </div>
+                                        @endif
                                         <div class="card-body"{{--style="display: grid; align-content: center"--}}>
                                             <div class="card-title text-center" style="font-size: xx-large; color: black">
                                                 {{ $item->product->title }}
@@ -52,17 +54,16 @@
                                             <div class="row">
                                                 <div class="col-md">
                                                     <div class="input-group">
-                                                        <button type="button" class="btn btn-secondary plus">-</button>
+                                                        <button type="button" class="btn btn-secondary minus">-</button>
                                                         <input type="text" style="flex: 1; min-width: 50px; text-align: center"
                                                                class="form-control quantity" aria-describedby="btnGroupAddon"
                                                                value="{{ $item->quantity }}" name="items-quantity[]">
-                                                        <button type="button" class="btn btn-secondary minus">+</button>
+                                                        <button type="button" class="btn btn-secondary plus">+</button>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md" style="display: flex; justify-content: flex-end; color: black">
-                                                    <input type="hidden" class="base-price" value="{{ $item->product->price }}">
-                                                    <span class="sum-price">{{ $item->quantity * $item->product->price }}</span>
+                                                    <span class="price">{{ $item->product->price }}</span>
                                                     руб.
                                                 </div>
                                             </div>
@@ -87,3 +88,9 @@
         @endempty
     </main>
 @endsection
+<script>
+    import Delivery from "../../dev2/delivery.html";
+    export default {
+        components: {Delivery}
+    }
+</script>

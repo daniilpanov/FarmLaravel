@@ -71,6 +71,7 @@ $(document).ready(function () {
             },
             success: function () {
                 card.closest('div[class^="col-"]').remove();
+                calcsum();
             },
             error: function () {
                 alert('Sorry, an error occurred when you was trying to delete this product. Please, try to reload this page and do it again.');
@@ -91,6 +92,7 @@ $(document).ready(function () {
                 },
                 success: function () {
                     curr.closest('div[class="col-md-6"]').remove();
+                    calcsum();
                 },
                 error: function () {
                     alert('Sorry, an error occurred...');
@@ -103,5 +105,34 @@ $(document).ready(function () {
         $('#cart-form input.cart-item-id').each(function () {
             $(this).prop('checked', check);
         });
-    })
+        calcsum();
+    });
+    $('.plus').click(function () {
+        let i = $(this).closest('div').find('input.quantity');
+        i.val(Number.parseInt(i.val()) + 1);
+        calcsum();
+    });
+    $('.minus').click(function () {
+        let i = $(this).closest('div').find('input.quantity');
+        let c = Number.parseInt(i.val());
+        if (c - 1 < 1) {
+            return;
+        }
+        i.val(c - 1);
+        calcsum();
+    });
+    $('.quantity').change(calcsum);
+
+    function calcsum() {
+        let sum = 0;
+        $('.cart-item').each(function () {
+            if (!$(this).find('.cart-item-id').is(':checked')) {
+                return;
+            }
+            sum += Number.parseInt($(this).find('.quantity').val()) * Number.parseInt($(this).find('.price').text());
+        });
+        $('.all-sum-price > span').text(sum);
+    }
+
+    $('#cart-form .cart-item-id').change(calcsum);
 });
