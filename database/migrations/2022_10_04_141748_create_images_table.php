@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
+            $table->string('title')->nullable();
+            $table->string('path')->unique();
+            $table->boolean('visible')->default(true);
+            $table->bigInteger('product_id');
+            $table->string('alt')->nullable();
             $table->timestamps();
         });
     }

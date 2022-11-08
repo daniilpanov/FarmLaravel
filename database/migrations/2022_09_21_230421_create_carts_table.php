@@ -15,7 +15,12 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('product_id');
+            $table->mediumText('user_uuid');
+            $table->unsignedTinyInteger('quantity')->default(1);
             $table->timestamps();
+
+            $table->unique(['product_id', 'user_uuid']);
         });
     }
 

@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('catalogs', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->unique();
+            $table->string('title')->unique();
+            $table->bigInteger('image_id');
+            $table->boolean('visible')->default(true);
+            $table->string('alias')->unique();
+            $table->bigInteger('page_id');
             $table->timestamps();
         });
     }

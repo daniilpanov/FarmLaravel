@@ -23,6 +23,7 @@ return new class extends Migration
             $table->boolean('clickable')->default(true);
             $table->boolean('visible')->default(true);
             $table->bigInteger('parent_id')->nullable();
+            $table->bigInteger('header_image_id')->nullable();
             $table->timestamps();
         });
     }
