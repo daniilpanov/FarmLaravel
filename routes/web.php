@@ -34,3 +34,6 @@ Route::get('/{page?}', [PageController::class, 'page']);
 
 
 Route::post('/contacts/send', [MessageController::class, 'sendMsg']);
+
+Route::post('/cart/order', [CartController::class, 'order']);
+Route::post('/cart/buy', [CartController::class, 'buy']);

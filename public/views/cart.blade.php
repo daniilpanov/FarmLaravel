@@ -6,7 +6,8 @@
         @empty($cart_items->toArray())
             <div class="text-center">{{ __('Продукты в корзине отсутствуют') }}</div>
         @else
-            <form id="cart-form">
+            <form id="cart-form" action="/cart/order" method="post">
+                @csrf
                 <div class="form-header" style="padding: 1.5rem">
                     <label>
                         Выбрать все:
@@ -20,7 +21,6 @@
                             @foreach($cart_items as $item)
                                 <div class="col-md-6" style="margin-bottom: calc(var(--bs-gutter-x))">
                                     <div class="card cart-item" style="width: 100%; min-height: 100%">
-                                        <input type="hidden" class="item-id" value="{{ $item->id }}">
                                         <div class="row card-header" style="padding: 0">
                                             <div class="col-md" style="display: grid; justify-content: flex-start; align-content: baseline">
                                                 <input id="cart-item-{{ $item->id }}" class="cart-item-id custom"
@@ -65,6 +65,9 @@
                                                 <div class="col-md" style="display: flex; justify-content: flex-end; color: black">
                                                     <span class="price">{{ $item->product->price }}</span>
                                                     руб.
+                                                    @if($item->product->price_description)
+                                                        ({{ $item->product->price_description }})
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -88,9 +91,3 @@
         @endempty
     </main>
 @endsection
-<script>
-    import Delivery from "../../dev2/delivery.html";
-    export default {
-        components: {Delivery}
-    }
-</script>

@@ -62,7 +62,7 @@ $(document).ready(function () {
             return;
         }
         card = $(this).closest('.cart-item');
-        item_id = card.find('input.item-id').val();
+        item_id = card.find('input.cart-item-id').val();
         $.ajax({
             url: '/api/cart/del',
             type: 'delete',

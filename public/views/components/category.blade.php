@@ -57,7 +57,12 @@
                                 </div>
                                 <div class="dot-spawn">&nbsp;</div>
                                 <div>
-                                    <span class="product-price">{{ $product->price }} {{ __('руб.') }}</span>
+                                    <span class="product-price">
+                                        {{ $product->price }} {{ __('руб.') }}
+                                        @if($product->price_description)
+                                            ({{ $product->price_description }})
+                                        @endif
+                                    </span>
                                 </div>
                             </div>
                         </li>

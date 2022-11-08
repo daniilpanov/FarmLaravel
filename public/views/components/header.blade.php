@@ -13,11 +13,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav" style="width: 100%; justify-content: space-between">
-                @foreach($menu as $item)
-                    <li class="nav-item doska">
-                        <a class="nav-link lnk{!! $item->alias == $page_alias ? ' active" aria-current="page' : '' !!}"  href="/{{ $item->alias }}">{{ $item->name }}</a>
-                    </li>
-                @endforeach
+                @isset($page_alias)
+                    @foreach($menu as $item)
+                        <li class="nav-item doska">
+                            <a class="nav-link lnk{!! $item->alias == $page_alias ? ' active" aria-current="page' : '' !!}"  href="/{{ $item->alias }}">{{ $item->name }}</a>
+                        </li>
+                    @endforeach
+                @else
+                    @foreach($menu as $item)
+                        <li class="nav-item doska">
+                            <a class="nav-link lnk"  href="/{{ $item->alias }}">{{ $item->name }}</a>
+                        </li>
+                    @endforeach
+                @endisset
             </ul>
         </div>
     </nav>

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Kernel;
 use App\Models\Cart;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class CartController extends Controller
 {
@@ -45,5 +48,54 @@ class CartController extends Controller
     {
         $item = Cart::findOrFail($request->input('id'));
         return $item->delete();
+    }
+
+    public function order(Request $request)
+    {
+        $items = $request->input('items');
+        $quantities = $request->input('items-quantity');
+        $data = [];
+
+        for ($i = 0; $i < count($items); ++$i) {
+            $item = Cart::find($items[$i]);
+            throw_unless($item);
+            $data[$item->product_id] = [$quantities[$i], $items[$i]];
+        }
+
+        return $this->current_view = \view('order')->with('data', json_encode($data));
+    }
+
+    public function buy(Request $request)
+    {
+        $order_data = (array)json_decode($request->input('order_data'));
+        $items_for_del = [];
+        $products_ids = [];
+
+        foreach ($order_data as $id => $item_data) {
+            $products_ids[] = $id;
+            $items_for_del[] = $item_data[1];
+        }
+
+        Cart::whereIn('id', $items_for_del)->delete();
+        $products = Product::whereIn('id', $products_ids)->get();
+
+        $sum_price = 0;
+        foreach ($products as $product) {
+            $sum_price += $product->price * (int)$order_data[$product->id][0];
+        }
+
+        $model = new Order;
+        foreach ($request->input() as $key => $value) {
+            $model->$key = $value;
+        }
+        $model->order_data = $order_data;
+        $model->products = $products;
+        $model->sum_price = $sum_price;
+
+        //return $this->current_view = \view('emails.order-form')->with('model', $model);
+
+        Mail::to(User::getAdmin())->queue(new \App\Mail\Order($model));
+
+        return $this->current_view = \view('thank-you-for-order');
     }
 }
