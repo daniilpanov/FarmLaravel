@@ -11,6 +11,20 @@
 @section('header.image.url'){{ $page?->image?->path() }}@endsection
 
 @section('content')
+    @isset($data['success'])
+        @if ($data['success'] == 1)
+            <script>
+                notification('<strong>Ваше обращение отправлено</strong>! В ближайшее время мы свяжемся с Вами по электронной почте', true);
+                window.history.pushState(null, '', document.location.pathname);
+            </script>
+        @else
+            <script>
+                notification('Что-то пошло не так! Попробуйте ещё раз. Приносим свои извинения.', false);
+                window.history.pushState(null, '', document.location.pathname);
+            </script>
+        @endif
+    @endisset
+
     <section>
         <h1 class="first">{{ $___('we_have', 'Мы предлагаем') }}:</h1>
 

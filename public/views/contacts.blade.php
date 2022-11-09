@@ -5,13 +5,15 @@
 @section('content')
     @isset($data['success'])
         @if ($data['success'] == 1)
-            <div class="modal">
-                <a href="/contacts" onclick="window.history.pushState('', '', location.pathname)">&times;</a>
-            </div>
+            <script>
+                notification('<strong>Ваше обращение отправлено</strong>! В ближайшее время мы свяжемся с Вами по электронной почте', true);
+                window.history.pushState(null, '', document.location.pathname);
+            </script>
         @else
-            <div class="modal">
-                <a href="/contacts" onclick="window.history.pushState('', '', location.pathname)">&times;</a>
-            </div>
+            <script>
+                notification('Что-то пошло не так! Попробуйте ещё раз. Приносим свои извинения.', false);
+                window.history.pushState(null, '', document.location.pathname);
+            </script>
         @endif
     @endisset
     <section>
@@ -88,26 +90,26 @@
             @csrf
             <div class="row">
                 <div class="col-md-4 offset-md-1">
-                    <label>{{ $___('name', 'Имя') }}: </label>
+                    <label>{{ $___('name', 'Имя') }}*: </label>
                 </div>
                 <div class="col-md-6">
-                    <input name="name" type="text" class="form-control" placeholder="{{ $___('name', 'Имя') }}" aria-label="{{ $___('name', 'Имя') }}">
+                    <input name="name" required type="text" class="form-control" placeholder="{{ $___('name', 'Имя') }}" aria-label="{{ $___('name', 'Имя') }}">
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4 offset-md-1">
-                    <label>{{ $___('phone', 'Телефон') }}: </label>
+                    <label>{{ $___('phone', 'Телефон') }}*: </label>
                 </div>
                 <div class="col-md-6">
-                    <input name="tel" type="tel" class="form-control" placeholder="{{ $___('phone', 'Телефон') }}" aria-label="{{ $___('phone', 'Телефон') }}">
+                    <input name="tel" required type="tel" class="form-control" placeholder="{{ $___('phone', 'Телефон') }}" aria-label="{{ $___('phone', 'Телефон') }}">
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4 offset-md-1">
-                    <label>E-Mail: </label>
+                    <label>E-Mail*: </label>
                 </div>
                 <div class="col-md-6">
-                    <input name="email" type="email" class="form-control" placeholder="E-mail" aria-label="E-mail">
+                    <input name="email" required type="email" class="form-control" placeholder="E-mail" aria-label="E-mail">
                 </div>
             </div>
             <div class="row">

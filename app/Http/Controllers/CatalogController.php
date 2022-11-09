@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Kernel;
 use App\Models\Catalog;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 
 class CatalogController extends Controller
 {
@@ -14,7 +14,7 @@ class CatalogController extends Controller
      * @return View
      * @throws \Throwable
      */
-    public function __invoke(): View
+    public function __invoke(Request $request): View
     {
         return $this->current_view = view('catalog')
             ->with(
@@ -27,7 +27,8 @@ class CatalogController extends Controller
                     ])->where('catalogs.visible', true)
                     ->leftJoin('pages', 'page_id', '=', 'pages.id')
                     ->get()
-            )->with('page', $this->getPage('catalog')['page']);
+            )->with('page', $this->getPage('catalog')['page'])
+            ->with('data', $request->input());
     }
 
     /**

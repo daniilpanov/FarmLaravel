@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Kernel;
 use App\Models\Cart;
+use App\Models\Message;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
@@ -11,6 +13,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redirect;
 
 class CartController extends Controller
 {
@@ -23,18 +26,20 @@ class CartController extends Controller
      */
     public function __invoke(Request $request): View|Factory|Application
     {
-        return view('cart')->with('cart_items', Cart::all())
+        return view('cart')
+            ->with('cart_items', Cart::where('user_uuid', Kernel::$uuid)->get())
             ->with('page', $this->getPage('cart')['page']);
     }
 
     public function add(Request $request)
     {
         /** @var $item Cart */
-        $item = Cart::create();
-        $item->user_uuid = $request->input('uuid');
-        $item->product_id = $request->input('product_id');
-        $item->quantity = $request->input('quantity');
-        return $item->save() ? $item->id : 0;
+        $item = Cart::create([
+            'user_uuid' => $request->input('uuid'),
+            'product_id' => $request->input('product_id'),
+            'quantity' => $request->input('quantity'),
+        ]);
+        return $item->id;
     }
 
     public function editQuantity(Request $request)
@@ -92,10 +97,16 @@ class CartController extends Controller
         $model->products = $products;
         $model->sum_price = $sum_price;
 
-        //return $this->current_view = \view('emails.order-form')->with('model', $model);
+        try {
+            Mail::to(User::getAdmin())->queue(new \App\Mail\Order($model));
+            $success = $model->save();
+        } catch (\Exception) {
+            $success = false;
+        }
 
-        Mail::to(User::getAdmin())->queue(new \App\Mail\Order($model));
-
-        return $this->current_view = \view('thank-you-for-order');
+        return Redirect::action(
+            CatalogController::class,
+            ['success' => $success]
+        );
     }
 }

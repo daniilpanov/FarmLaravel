@@ -11,7 +11,7 @@
                 <div class="form-header" style="padding: 1.5rem">
                     <label>
                         Выбрать все:
-                        <input id="choose-all" class="custom" type="checkbox">
+                        <input id="choose-all" checked class="custom" type="checkbox">
                         <label for="choose-all" class="checkbox-body" style="width: 1em; height: 1em"></label>
                     </label>
                 </div>
@@ -24,7 +24,7 @@
                                         <div class="row card-header" style="padding: 0">
                                             <div class="col-md" style="display: grid; justify-content: flex-start; align-content: baseline">
                                                 <input id="cart-item-{{ $item->id }}" class="cart-item-id custom"
-                                                       type="checkbox" title="Выбрать"
+                                                       type="checkbox" title="Выбрать" checked
                                                        name="items[]" value="{{ $item->id }}">
                                                 <label for="cart-item-{{ $item->id }}" class="checkbox-body"></label>
                                             </div>
@@ -82,7 +82,7 @@
                             <span>0</span> руб.
                         </div>
                         <hr style="background-color: rgb(138, 239, 14)">
-                        <button type="submit" class="btn btn-success btn-block">Заказать</button>
+                        <button type="submit" disabled class="btn btn-success btn-block">Заказать</button>
                         <hr style="opacity: 0; margin: .5rem 0">
                         <button type="reset" class="form-reset btn btn-danger btn-block">Удалить выбранные</button>
                     </div>

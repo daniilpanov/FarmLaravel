@@ -13,9 +13,10 @@ $(document).ready(function () {
             success: function () {
                 $(clk).css('display', 'none');
                 $('.add-cart-item[data-bs-target="' + $(clk).attr('data-bs-product') + '"]').css({'display': ''});
+                //notification('Товар успешно удалён из корзины', true);
             },
             error: function () {
-                alert('Sorry, an error occurred when you was trying to delete this product. Please, try to reload this page and do it again.');
+                //alert('Sorry, an error occurred when you was trying to delete this product. Please, try to reload this page and do it again.');
             },
         });
     });
@@ -48,9 +49,10 @@ $(document).ready(function () {
                 } else {
                     $('.del-cart-item[data-bs-product="' + target + '"]').attr('data-bs-target', result).css({'display': ''});
                 }
+                notification('Товар успешно добавлен в корзину. Нажмите, чтобы перейти', true, '/cart');
             },
             error: function () {
-                alert('Sorry, an error occurred when you was trying to add this product. Please, try to reload this page and do it again.');
+                //alert('Sorry, an error occurred when you was trying to add this product. Please, try to reload this page and do it again.');
             },
         });
     });
@@ -74,7 +76,7 @@ $(document).ready(function () {
                 calcsum();
             },
             error: function () {
-                alert('Sorry, an error occurred when you was trying to delete this product. Please, try to reload this page and do it again.');
+                notification('Sorry, an error occurred when you was trying to delete this product. Please, try to reload this page and do it again.')
             },
         });
     });
@@ -95,7 +97,7 @@ $(document).ready(function () {
                     calcsum();
                 },
                 error: function () {
-                    alert('Sorry, an error occurred...');
+                    notification('Sorry, an error occurred...');
                 },
             });
         });
@@ -110,6 +112,7 @@ $(document).ready(function () {
     $('.plus').click(function () {
         let i = $(this).closest('div').find('input.quantity');
         i.val(Number.parseInt(i.val()) + 1);
+        $(this).closest('.cart-item').find('.cart-item-id').prop('checked', true);
         calcsum();
     });
     $('.minus').click(function () {
@@ -132,7 +135,69 @@ $(document).ready(function () {
             sum += Number.parseInt($(this).find('.quantity').val()) * Number.parseInt($(this).find('.price').text());
         });
         $('.all-sum-price > span').text(sum);
+        $('#cart-form button[type="submit"]').attr('disabled', sum < 1);
     }
 
     $('#cart-form .cart-item-id').change(calcsum);
+
+    calcsum();
 });
+
+let active_notifications = [];
+function notification(text, success = null, href = null) {
+    const note = href === null
+        ? $('<div class="alert alert-dismissible fade show" role="alert">' +
+            text +
+            '  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+            '</div>')
+        : $('<a href="' + href + '" class="alert alert-dismissible fade show" role="alert">' +
+            text +
+            '  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+            '</a>');
+    if (success === true) {
+        note.addClass('alert-success');
+    } else if (success === false) {
+        note.addClass('alert-warning');
+    } else {
+        note.addClass('alert-secondary');
+    }
+    if (active_notifications.length > 0) {
+        note.css('top', (function (an) {
+            let all = 0;
+            let count = 1;
+            an.forEach(function (el) {
+                all += $(el[0]).outerHeight();
+                ++count;
+            });
+            return `calc(.35rem * ${count} + ${all}px)`;
+        })(active_notifications));
+    }
+    note.appendTo($('body'));
+    active_notifications.push([note, setTimeout(delnote, 10000, note)]);
+    note.find('.btn-close').click(function () {
+        for (let i in active_notifications) {
+            if (active_notifications[i][0] === note) {
+                clearTimeout(active_notifications[i][1]);
+            }
+        }
+        delnote(note);
+    });
+    return note;
+}
+
+function delnote(note) {
+    note.remove();
+    setTimeout(function (item) {
+        let count = 1;
+        let all = 0;
+        active_notifications.forEach(function (el) {
+            if (el[0] === item) {
+                active_notifications.splice(count - 1, count - 1);
+                --count;
+            }
+            el[0].css('top', `calc(.35rem * ${count} + ${all}px)`);
+            ++count;
+            all += el[0].outerHeight();
+        });
+    }, 500, note);
+}

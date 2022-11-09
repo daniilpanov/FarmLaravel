@@ -2,6 +2,16 @@ a, a:hover {
     text-decoration: none;
     color: inherit;
 }
+/* alerts */
+.alert {
+    position: fixed;
+    right: .35rem;
+    top: .35rem;
+    width: 33vw;
+    z-index: 999999999;
+
+    transition: top .2s ease-out;
+}
 /* btn-block */
 .btn-block {
     display: block;
