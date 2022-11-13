@@ -6,10 +6,12 @@ a, a:hover {
 #notifications {
     z-index: 999999999;
     position: fixed;
-    max-height: 50vh;
+    max-height: 75vh;
     width: 33.3vw;
-    top: .35em;
-    right: .35em;
+    top: 0;
+    right: -16px;
+    padding: .35em;
+    overflow-y: scroll;
 }
 .alert {
     display: block;

@@ -1,28 +1,63 @@
+function get_uuid () {
+    return ((raw_cookies) => {
+        let t;
+        for (let rawCookiesKey in raw_cookies) {
+            t = raw_cookies[rawCookiesKey].split('=')
+            if (t[0] === 'uuid'){
+                return t[1];
+            }
+        }
+        return null;
+    })(document.cookie.split('; '));
+}
+
 $(document).ready(function () {
-    let clk;
+    /*function correctState(rb, gb, id, act) {
+        $.ajax({
+            url: '/api/cart/get/' + id,
+            type: 'get',
+            data: {
+                'uuid': get_uuid(),
+            },
+            success: function (data) {
+                console.log(data);
+                /!*$(clk).css('display', 'none');
+                $('.add-cart-item[data-bs-target="' + $(clk).attr('data-bs-product') + '"]').css({'display': ''});*!/
+                //notification('Товар успешно удалён из корзины', true);
+            },
+            error: function () {
+                notification(`Sorry, an error occurred when you was trying to ${act} this product. Please, try to reload this page and do it again.`, false);
+            },
+        });
+    }*/
+    let clk, alt;
     let target;
     $('.del-cart-item').click(function () {
-        target = $(this).attr('data-bs-target');
+        target = $(this).attr('data-bs-product');
         clk = this;
         $.ajax({
             url: '/api/cart/del',
             type: 'delete',
             data: {
                 'id': target,
+                'uuid': get_uuid(),
             },
             success: function () {
                 $(clk).css('display', 'none');
-                $('.add-cart-item[data-bs-target="' + $(clk).attr('data-bs-product') + '"]').css({'display': ''});
+                alt = $(`.add-cart-item[data-bs-product="${target}"]`)
+                    .css({'display': ''});
                 //notification('Товар успешно удалён из корзины', true);
             },
-            error: function () {
-                //alert('Sorry, an error occurred when you was trying to delete this product. Please, try to reload this page and do it again.');
+            error: function (msg) {
+                if (msg.responseJSON.message === 'Too Many Attempts.') {
+                    notification('Вы слишком много раз подряд добавляли и удаляли этот товар.', false)
+                }
+                //correctState(alt, clk, target, 'delete');
             },
         });
     });
-    let tmp_target;
     $('.add-cart-item').click(function () {
-        target = $(this).attr('data-bs-target');
+        target = $(this).attr('data-bs-product');
         clk = this;
         $.ajax({
             url: '/api/cart/add',
@@ -30,29 +65,19 @@ $(document).ready(function () {
             data: {
                 'product_id': target,
                 'quantity': 1,
-                'uuid': ((raw_cookies) => {
-                    let t;
-                    for (let rawCookiesKey in raw_cookies) {
-                        t = raw_cookies[rawCookiesKey].split('=')
-                        if (t[0] === 'uuid'){
-                            return t[1];
-                        }
-                    }
-                    return null;
-                })(document.cookie.split('; ')),
+                'uuid': get_uuid(),
             },
-            success: function (result) {
+            success: function () {
                 $(clk).css('display', 'none');
-                tmp_target = $('.del-cart-item[data-bs-target="' + result + '"]');
-                if (tmp_target.length > 0) {
-                    tmp_target.attr('data-bs-target', result).css({'display': ''});
-                } else {
-                    $('.del-cart-item[data-bs-product="' + target + '"]').attr('data-bs-target', result).css({'display': ''});
-                }
+                alt = $(`.del-cart-item[data-bs-product="${target}"]`)
+                    .css({'display': ''});
                 notification('Товар успешно добавлен в корзину. Нажмите, чтобы перейти', true, '/cart');
             },
-            error: function () {
-                //alert('Sorry, an error occurred when you was trying to add this product. Please, try to reload this page and do it again.');
+            error: function (msg) {
+                if (msg.responseJSON.message === 'Too Many Attempts.') {
+                    notification('Вы слишком много раз подряд добавляли и удаляли этот товар.', false)
+                }
+                //correctState(alt, clk, target, 'add');
             },
         });
     });

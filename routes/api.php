@@ -24,6 +24,7 @@ Route::post('/locale/set', function (Request $request) {
     App::setLocale($request->input('lng'));
 });*/
 
+Route::get('/cart/get/{id}', [CartController::class, 'add'])->whereNumber('id');
 Route::post('/cart/add', [CartController::class, 'add']);
 Route::patch('/cart/edit', [CartController::class, 'editQuantity']);
 Route::delete('/cart/del', [CartController::class, 'deleteItem']);

@@ -31,6 +31,11 @@ class CartController extends Controller
             ->with('page', $this->getPage('cart')['page']);
     }
 
+    public function get(Request $request, int $id)
+    {
+        return Cart::select()->where('product_id', $id)->where('user_uuid', $request->input('uuid'))->first();
+    }
+
     public function add(Request $request)
     {
         /** @var $item Cart */
@@ -39,19 +44,22 @@ class CartController extends Controller
             'product_id' => $request->input('product_id'),
             'quantity' => $request->input('quantity'),
         ]);
-        return $item->id;
+        return $item->product_id;
     }
 
     public function editQuantity(Request $request)
     {
-        $item = Cart::findOrFail($request->input('id'));
+        $item = Cart::where('product_id', $request->input('id'))
+            ->where('user_uuid', $request->input('uuid'))->first();
         $item->quantity = $request->input('quantity');
         return $item->save();
     }
 
     public function deleteItem(Request $request)
     {
-        $item = Cart::findOrFail($request->input('id'));
+        $item = Cart::find($request->input('id'))
+            ?? Cart::where('product_id', $request->input('id'))
+                ->where('user_uuid', $request->input('uuid'))->first();
         return $item->delete();
     }
 

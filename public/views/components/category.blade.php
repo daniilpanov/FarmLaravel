@@ -14,8 +14,7 @@
                             <div class="category-item" {{--href="/catalog/{{ $product->full_alias() }}"--}}>
                                 @if($product->cart)
                                     <button type="button" class="btn btn-danger del-cart-item"
-                                            data-bs-product="{{ $product->id }}" data-bs-target="{{ $product->cart->id }}"
-                                            title="Удалить из корзины">
+                                            data-bs-product="{{ $product->id }}" title="Удалить из корзины">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                              fill="currentColor" viewBox="0 0 16 16">
                                             <path
@@ -25,7 +24,7 @@
                                         </svg>
                                     </button>
                                     <button type="button" class="btn btn-success add-cart-item" style="display: none"
-                                            title="Добавить в корзину"  data-bs-target="{{ $product->id }}">
+                                            title="Добавить в корзину" data-bs-product="{{ $product->id }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                              fill="currentColor" viewBox="0 0 16 16">
                                             <path
@@ -44,7 +43,7 @@
                                         </svg>
                                     </button>
                                     <button type="button" class="btn btn-success add-cart-item"
-                                            title="Добавить в корзину" data-bs-target="{{ $product->id }}">
+                                            title="Добавить в корзину" data-bs-product="{{ $product->id }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                              fill="currentColor" viewBox="0 0 16 16">
                                             <path

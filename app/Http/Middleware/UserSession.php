@@ -24,6 +24,7 @@ class UserSession
     {
         if (!$request->hasCookie('uuid')) {
             $uuid = Str::uuid();
+
             Kernel::$uuid = $uuid;
             View::share('uuid', $uuid);
             return $next($request)->withCookie(Cookie::make('uuid', $uuid, 0, null, null, false, false));
