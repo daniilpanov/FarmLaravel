@@ -29,6 +29,7 @@
 </head>
 
 <body>
+<div id="notifications"></div>
 @yield('content')
 
 <script type="module">

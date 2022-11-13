@@ -38,6 +38,7 @@
 </head>
 
 <body>
+<div id="notifications"></div>
 <header>
     @include('components.header')
 </header>

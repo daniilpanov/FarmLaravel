@@ -161,18 +161,7 @@ function notification(text, success = null, href = null) {
     } else {
         note.addClass('alert-secondary');
     }
-    if (active_notifications.length > 0) {
-        note.css('top', (function (an) {
-            let all = 0;
-            let count = 1;
-            an.forEach(function (el) {
-                all += $(el[0]).outerHeight();
-                ++count;
-            });
-            return `calc(.35rem * ${count} + ${all}px)`;
-        })(active_notifications));
-    }
-    note.appendTo($('body'));
+    note.appendTo($('#notifications'));
     active_notifications.push([note, setTimeout(delnote, 10000, note)]);
     note.find('.btn-close').click(function () {
         for (let i in active_notifications) {
@@ -187,17 +176,4 @@ function notification(text, success = null, href = null) {
 
 function delnote(note) {
     note.remove();
-    setTimeout(function (item) {
-        let count = 1;
-        let all = 0;
-        active_notifications.forEach(function (el) {
-            if (el[0] === item) {
-                active_notifications.splice(count - 1, count - 1);
-                --count;
-            }
-            el[0].css('top', `calc(.35rem * ${count} + ${all}px)`);
-            ++count;
-            all += el[0].outerHeight();
-        });
-    }, 500, note);
 }
